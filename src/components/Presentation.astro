@@ -30,6 +30,7 @@ import { getAssetPath } from "../utils/assets";
                     src={getAssetPath("/yo.jpg")} 
                     alt="Leonardo Rangel Segura" 
                     class="relative w-72 h-72 lg:w-80 lg:h-80 rounded-2xl object-cover shadow-2xl transition-all duration-500 group-hover:scale-105"
+                    onerror="console.error('Error cargando imagen:', this.src); this.style.border='2px solid red';"
                 />
             </div>
         </div>
