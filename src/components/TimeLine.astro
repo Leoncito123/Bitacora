@@ -3,7 +3,7 @@ import { getAssetPath } from "../utils/assets";
 ---
 
 <div
-    class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:ml-[8.75rem] md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent"
+    class="space-y-8 relative before:absolute before:inset-0 before:left-5 before:top-0 before:bottom-0 before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent md:before:left-[8.75rem] md:before:translate-x-0"
     role="list"
     aria-label="Línea de tiempo de mi trayectoria académica y profesional"
 >
@@ -513,3 +513,53 @@ import { getAssetPath } from "../utils/assets";
         </div>
     </div>
 </div>
+
+<style>
+/* Estilos adicionales para asegurar que la línea de tiempo se vea en móvil */
+.timeline-item {
+    position: relative;
+}
+
+/* Asegurar que la línea vertical se vea en móvil */
+@media (max-width: 768px) {
+    .timeline-item::before {
+        content: '';
+        position: absolute;
+        left: 1.25rem; /* 20px - posición del centro del icono */
+        top: 2.5rem; /* después del icono */
+        bottom: -2rem; /* conectar con el siguiente elemento */
+        width: 2px;
+        background: linear-gradient(to bottom, transparent, #cbd5e1, transparent);
+        z-index: 0;
+    }
+    
+    /* Remover la línea del último elemento */
+    .timeline-item:last-child::before {
+        display: none;
+    }
+    
+    /* Asegurar que los iconos estén por encima de la línea */
+    .timeline-icon {
+        position: relative;
+        z-index: 10;
+    }
+    
+    /* Ajustar las tarjetas */
+    .timeline-card {
+        position: relative;
+        z-index: 5;
+    }
+}
+
+/* Mejorar la responsividad de las imágenes */
+.timeline-image {
+    max-height: 250px;
+    object-fit: cover;
+}
+
+@media (max-width: 640px) {
+    .timeline-image {
+        max-height: 200px;
+    }
+}
+</style>
