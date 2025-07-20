@@ -12,18 +12,18 @@ import { getAssetPath } from "../utils/assets";
                 </p>
             </div>
             
-            <div class="element-animate fade-in-up-delay-1">
+            <div class="fade-in-up-delay-1">
                 <p class="text-body max-w-lg mx-auto lg:mx-0">
                     Creando experiencias digitales excepcionales con código limpio y diseño elegante.
                 </p>
             </div>
             
-            <div class="element-animate fade-in-up-delay-2 flex justify-center lg:justify-start">
+            <div class="fade-in-up-delay-2 flex justify-center lg:justify-start">
                 <div class="w-24 h-1 bg-gradient-to-r from-purple-400 to-purple-600 rounded-full"></div>
             </div>
         </div>
         
-        <div class="flex justify-center items-center element-animate fade-in-up-delay-1">
+        <div class="flex justify-center items-center fade-in-up-delay-1">
             <div class="relative group">
                 <div class="absolute -inset-1 bg-gradient-to-r from-purple-400 to-purple-600 rounded-2xl blur-lg opacity-25 group-hover:opacity-50 transition duration-500"></div>
                 <img 
@@ -36,3 +36,52 @@ import { getAssetPath } from "../utils/assets";
         </div>
     </div>
 </div>
+
+<script>
+    // Activar animaciones cuando la página carga
+    document.addEventListener('DOMContentLoaded', () => {
+        // Asegurar que todos los elementos con animaciones se muestren
+        const animatedElements = document.querySelectorAll('.element-animate, .fade-in-up-delay-1, .fade-in-up-delay-2');
+        
+        // Usar setTimeout para dar tiempo a que el CSS se cargue
+        setTimeout(() => {
+            animatedElements.forEach((element) => {
+                const htmlElement = element as HTMLElement;
+                htmlElement.classList.add('animate-in');
+                htmlElement.style.opacity = '1';
+                htmlElement.style.transform = 'translateY(0)';
+            });
+        }, 100);
+        
+        // También asegurar que la presentación sea visible
+        const presentation = document.querySelector('.presentation') as HTMLElement;
+        if (presentation) {
+            presentation.style.opacity = '1';
+            presentation.style.transform = 'translateY(0)';
+        }
+    });
+</script>
+
+<style>
+    /* Asegurar que los elementos sean visibles */
+    .fade-in-up-delay-1,
+    .fade-in-up-delay-2 {
+        opacity: 1;
+        transform: translateY(0);
+        animation: fadeInUp 0.8s ease-out forwards;
+    }
+    
+    .fade-in-up-delay-1 {
+        animation-delay: 0.2s;
+    }
+    
+    .fade-in-up-delay-2 {
+        animation-delay: 0.4s;
+    }
+    
+    /* Asegurar que la presentación sea visible */
+    .presentation {
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
