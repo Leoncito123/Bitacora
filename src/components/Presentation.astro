@@ -1,5 +1,5 @@
 ---
-
+import { getAssetPath } from "../utils/assets";
 ---
 <div class="presentation w-full max-w-6xl mx-auto px-6 relative">
     <!-- Fondo de partículas -->
@@ -26,7 +26,7 @@
         </div>
         <div class="flex justify-center items-center">
             <div class="relative">
-                <img src="/yo.JPG" alt="Leonardo Rangel Segura" class="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover shadow-2xl hover-glow transition-all duration-500 hover:scale-105" />
+                <img src={getAssetPath("/yo.JPG")} alt="Leonardo Rangel Segura" class="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover shadow-2xl hover-glow transition-all duration-500 hover:scale-105" />
                 <div class="absolute inset-0 rounded-full bg-gradient-to-r from-purple-400/20 to-blue-400/20 animate-pulse"></div>
             </div>
         </div>

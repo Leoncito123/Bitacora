@@ -1,5 +1,5 @@
 ---
-
+import { getAssetPath } from "../utils/assets";
 ---
 <div>
     <!-- Contacto -->
@@ -81,7 +81,7 @@
             </span>
         </a>
         <a
-            href="/Leo.pdf"
+            href={getAssetPath("/Leo.pdf")}
             download="Leonardo_Rangel_CV.pdf"
             class="contact-btn group bg-white/20 hover:bg-white/30 px-6 py-4 rounded-xl text-base font-semibold transition-all hover:scale-105 border border-white/20 w-full max-w-xs"
             aria-label="Descargar CV en formato PDF"

@@ -1,9 +1,10 @@
 ---
+import { getAssetPath } from "../utils/assets";
 ---
 <header class="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-lg border-b border-white/10 text-white py-4 px-6 flex items-center justify-between transition-all duration-300">
     <div class="text-2xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
         <a href="#inicio" class="hover:text-purple-300 transition-colors duration-300" onclick="smoothScrollToSection('inicio')">
-            <img src="/LRS.svg" alt="Leonardo Rangel Segura Logo" class="h-14 inline-block" />
+            <img src={getAssetPath("/LRS.svg")} alt="Leonardo Rangel Segura Logo" class="h-14 inline-block" />
         </a>
     </div>
     <nav>
