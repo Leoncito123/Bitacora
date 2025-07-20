@@ -1,0 +1,50 @@
+---
+---
+<header class="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-lg border-b border-white/10 text-white py-4 px-6 flex items-center justify-between transition-all duration-300">
+    <div class="text-2xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+        <a href="#inicio" class="hover:text-purple-300 transition-colors duration-300" onclick="smoothScrollToSection('inicio')">
+            <img src="/LRS.svg" alt="Leonardo Rangel Segura Logo" class="h-14 inline-block" />
+        </a>
+    </div>
+    <nav>
+        <ul class="flex space-x-6">
+            <li><a href="#inicio" class="nav-link hover:text-purple-300 transition-colors duration-300" onclick="smoothScrollToSection('inicio')">Inicio</a></li>
+            <li><a href="#acerca" class="nav-link hover:text-purple-300 transition-colors duration-300" onclick="smoothScrollToSection('acerca')">Acerca</a></li>
+            <li><a href="#timeline" class="nav-link hover:text-purple-300 transition-colors duration-300" onclick="smoothScrollToSection('timeline')">Línea de Tiempo</a></li>
+            <li><a href="#futuro" class="nav-link hover:text-purple-300 transition-colors duration-300" onclick="smoothScrollToSection('futuro')">Futuro</a></li>
+            <li><a href="#problem" class="nav-link hover:text-purple-300 transition-colors duration-300" onclick="smoothScrollToSection('problem')">Problemática</a></li>
+            <li><a href="#contacto" class="nav-link hover:text-purple-300 transition-colors duration-300" onclick="smoothScrollToSection('contacto')">Contacto</a></li>
+        </ul>
+    </nav>
+</header>
+
+<style>
+.nav-link {
+    position: relative;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.nav-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(168, 85, 247, 0.2), rgba(59, 130, 246, 0.2));
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.nav-link:hover::before {
+    opacity: 1;
+}
+
+.nav-link:hover {
+    transform: translateY(-2px);
+}
+</style>

@@ -1,0 +1,86 @@
+---
+import "../styles/global.css";
+---
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/LRS.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Leonardo Rangel Segura</title>
+	</head>
+	<body class="bg-gradient-to-r from-purple-900 to-purple-600">
+		<!-- Indicador de progreso de scroll -->
+		<div class="scroll-indicator" id="scrollIndicator"></div>
+		
+		<slot />
+		
+		<script>
+			// Función para el indicador de progreso de scroll
+			function updateScrollIndicator() {
+				const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+				const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+				const scrollProgress = (scrollTop / scrollHeight) * 100;
+				
+				const indicator = document.getElementById('scrollIndicator');
+				if (indicator) {
+					indicator.style.transform = `scaleX(${scrollProgress / 100})`;
+				}
+			}
+
+			// Intersection Observer para animaciones de scroll
+			function initializeScrollAnimations() {
+				const observer = new IntersectionObserver((entries) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add('animate-slide-in');
+							
+							// Animar los elementos hijos con delay
+							const children = entry.target.querySelectorAll('.skill-card, .project-card, .contact-btn');
+							children.forEach((child, index) => {
+								setTimeout(() => {
+									child.classList.add('animate-slide-in-child');
+								}, index * 200);
+							});
+						}
+					});
+				}, {
+					threshold: 0.1,
+					rootMargin: '-50px'
+				});
+
+				// Observar todas las secciones de slides
+				const slideCards = document.querySelectorAll('.slide-card');
+				slideCards.forEach((card) => observer.observe(card));
+			}
+
+			// Función para scroll suave personalizado
+			function smoothScrollToSection(targetId) {
+				const targetElement = document.getElementById(targetId);
+				if (targetElement) {
+					targetElement.scrollIntoView({
+						behavior: 'smooth',
+						block: 'start'
+					});
+				}
+			}
+
+			// Event listeners
+			window.addEventListener('scroll', updateScrollIndicator);
+			
+			// Inicializar cuando el DOM esté listo
+			document.addEventListener('DOMContentLoaded', () => {
+				initializeScrollAnimations();
+				updateScrollIndicator();
+			});
+
+			// Reinicializar si el contenido cambia dinámicamente
+			window.addEventListener('load', () => {
+				initializeScrollAnimations();
+				updateScrollIndicator();
+			});
+		</script>
+	</body>
+</html>
+
