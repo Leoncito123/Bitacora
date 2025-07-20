@@ -2,7 +2,7 @@
 import "../styles/global.css";
 ---
 <!doctype html>
-<html lang="es">
+<html lang="es" class="font-primary">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -10,13 +10,32 @@ import "../styles/global.css";
 		<meta name="generator" content={Astro.generator} />
 		<title>Leonardo Rangel Segura</title>
 	</head>
-	<body class="bg-gradient-to-r from-purple-900 to-purple-600">
+	<body>
+		<!-- Partículas de fondo -->
+		<div class="particles-bg" id="particles"></div>
+		
 		<!-- Indicador de progreso de scroll -->
 		<div class="scroll-indicator" id="scrollIndicator"></div>
 		
 		<slot />
 		
 		<script>
+			// Crear partículas de fondo
+			function createParticles() {
+				const particlesContainer = document.getElementById('particles');
+				if (!particlesContainer) return;
+				
+				for (let i = 0; i < 50; i++) {
+					const particle = document.createElement('div');
+					particle.className = 'particle';
+					particle.style.left = Math.random() * 100 + '%';
+					particle.style.top = Math.random() * 100 + '%';
+					particle.style.animationDelay = Math.random() * 8 + 's';
+					particle.style.animationDuration = (Math.random() * 8 + 8) + 's';
+					particlesContainer.appendChild(particle);
+				}
+			}
+
 			// Función para el indicador de progreso de scroll
 			function updateScrollIndicator() {
 				const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -29,28 +48,28 @@ import "../styles/global.css";
 				}
 			}
 
-			// Intersection Observer para animaciones de scroll
+			// Intersection Observer para animaciones suaves
 			function initializeScrollAnimations() {
 				const observer = new IntersectionObserver((entries) => {
 					entries.forEach((entry) => {
 						if (entry.isIntersecting) {
 							entry.target.classList.add('animate-slide-in');
 							
-							// Animar los elementos hijos con delay
-							const children = entry.target.querySelectorAll('.skill-card, .project-card, .contact-btn');
+							// Animar elementos hijos con delay escalonado
+							const children = entry.target.querySelectorAll('.element-animate');
 							children.forEach((child, index) => {
 								setTimeout(() => {
-									child.classList.add('animate-slide-in-child');
-								}, index * 200);
+									child.classList.add('animate-in');
+								}, index * 150);
 							});
 						}
 					});
 				}, {
-					threshold: 0.1,
+					threshold: 0.15,
 					rootMargin: '-50px'
 				});
 
-				// Observar todas las secciones de slides
+				// Observar todas las tarjetas de slide
 				const slideCards = document.querySelectorAll('.slide-card');
 				slideCards.forEach((card) => observer.observe(card));
 			}
@@ -71,6 +90,7 @@ import "../styles/global.css";
 			
 			// Inicializar cuando el DOM esté listo
 			document.addEventListener('DOMContentLoaded', () => {
+				createParticles();
 				initializeScrollAnimations();
 				updateScrollIndicator();
 			});

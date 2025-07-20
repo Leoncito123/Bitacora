@@ -3,21 +3,21 @@ import { getAssetPath } from "../utils/assets";
 ---
 <div>
     <!-- Contacto -->
-    <h2 class="text-4xl md:text-5xl font-bold mb-8">Contacto</h2>
-    <p class="text-lg md:text-xl mb-12 leading-relaxed">
+    <h2 class="heading-secondary mb-8 element-animate">Contacto</h2>
+    <p class="text-body mb-12 element-animate fade-in-up-delay-1">
         Contáctame a través de cualquiera de estos medios
     </p>
     <div
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 md:gap-6 justify-items-center"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 md:gap-6 justify-items-center element-animate fade-in-up-delay-2"
     >
         <a
             href="mailto:leonardo.rase@gmail.com"
-            class="contact-btn group bg-white/20 hover:bg-white/30 px-6 py-4 rounded-xl text-base font-semibold transition-all hover:scale-105 border border-white/20 w-full max-w-xs"
+            class="glass-effect card-hover px-6 py-4 rounded-xl text-base font-medium transition-all w-full max-w-xs"
             aria-label="Enviar email a leonardo.rase@gmail.com"
         >
-            <span class="flex items-center justify-center">
+            <span class="flex items-center justify-center text-white">
                 <svg 
-                    class="mr-3 w-6 h-6 group-hover:scale-110 transition-transform fill-current" 
+                    class="mr-3 w-6 h-6 transition-transform fill-current" 
                     viewBox="0 0 24 24"
                     aria-hidden="true"
                 >
@@ -30,12 +30,12 @@ import { getAssetPath } from "../utils/assets";
             href="https://github.com/Leoncito123"
             target="_blank"
             rel="noopener noreferrer"
-            class="contact-btn group bg-white/20 hover:bg-white/30 px-6 py-4 rounded-xl text-base font-semibold transition-all hover:scale-105 border border-white/20 w-full max-w-xs"
+            class="glass-effect card-hover px-6 py-4 rounded-xl text-base font-medium transition-all w-full max-w-xs"
             aria-label="Visitar perfil de GitHub"
         >
-            <span class="flex items-center justify-center">
+            <span class="flex items-center justify-center text-white">
                 <svg 
-                    class="mr-3 w-6 h-6 group-hover:scale-110 transition-transform fill-current" 
+                    class="mr-3 w-6 h-6 transition-transform fill-current" 
                     viewBox="0 0 24 24"
                     aria-hidden="true"
                 >
@@ -48,12 +48,12 @@ import { getAssetPath } from "../utils/assets";
             href="https://www.linkedin.com/in/leonardorangelseg?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
             target="_blank"
             rel="noopener noreferrer"
-            class="contact-btn group bg-white/20 hover:bg-white/30 px-6 py-4 rounded-xl text-base font-semibold transition-all hover:scale-105 border border-white/20 w-full max-w-xs"
+            class="glass-effect card-hover px-6 py-4 rounded-xl text-base font-medium transition-all w-full max-w-xs"
             aria-label="Visitar perfil de LinkedIn"
         >
-            <span class="flex items-center justify-center">
+            <span class="flex items-center justify-center text-white">
                 <svg 
-                    class="mr-3 w-6 h-6 group-hover:scale-110 transition-transform fill-current" 
+                    class="mr-3 w-6 h-6 transition-transform fill-current" 
                     viewBox="0 0 24 24"
                     aria-hidden="true"
                 >
@@ -63,15 +63,33 @@ import { getAssetPath } from "../utils/assets";
             </span>
         </a>
         <a
+            href="https://instagram.com/brujomictlan"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="glass-effect card-hover px-6 py-4 rounded-xl text-base font-medium transition-all w-full max-w-xs"
+            aria-label="Visitar perfil de Instagram"
+        >
+            <span class="flex items-center justify-center text-white">
+                <svg 
+                    class="mr-3 w-6 h-6 transition-transform fill-current" 
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+                    <path d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z" />
+                </svg>
+                Instagram
+            </span>
+        </a>
+        <a
             href="https://wa.me/525521703695"
             target="_blank"
             rel="noopener noreferrer"
-            class="contact-btn group bg-white/20 hover:bg-white/30 px-6 py-4 rounded-xl text-base font-semibold transition-all hover:scale-105 border border-white/20 w-full max-w-xs"
+            class="glass-effect card-hover px-6 py-4 rounded-xl text-base font-medium transition-all w-full max-w-xs"
             aria-label="Enviar mensaje por WhatsApp"
         >
-            <span class="flex items-center justify-center">
+            <span class="flex items-center justify-center text-white">
                 <svg 
-                    class="mr-3 w-6 h-6 group-hover:scale-110 transition-transform fill-current" 
+                    class="mr-3 w-6 h-6 transition-transform fill-current" 
                     viewBox="0 0 24 24"
                     aria-hidden="true"
                 >
@@ -83,12 +101,12 @@ import { getAssetPath } from "../utils/assets";
         <a
             href={getAssetPath("/Leo.pdf")}
             download="Leonardo_Rangel_CV.pdf"
-            class="contact-btn group bg-white/20 hover:bg-white/30 px-6 py-4 rounded-xl text-base font-semibold transition-all hover:scale-105 border border-white/20 w-full max-w-xs"
+            class="glass-effect card-hover px-6 py-4 rounded-xl text-base font-medium transition-all w-full max-w-xs"
             aria-label="Descargar CV en formato PDF"
         >
-            <span class="flex items-center justify-center">
+            <span class="flex items-center justify-center text-white">
                 <svg 
-                    class="mr-3 w-6 h-6 group-hover:scale-110 transition-transform fill-current" 
+                    class="mr-3 w-6 h-6 transition-transform fill-current" 
                     viewBox="0 0 24 24"
                     aria-hidden="true"
                 >

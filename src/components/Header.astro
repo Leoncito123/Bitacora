@@ -1,30 +1,66 @@
 ---
 import { getAssetPath } from "../utils/assets";
 ---
-<header class="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-lg border-b border-white/10 text-white py-4 px-6 flex items-center justify-between transition-all duration-300">
-    <div class="text-2xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-        <a href="#inicio" class="hover:text-purple-300 transition-colors duration-300" onclick="smoothScrollToSection('inicio')">
-            <img src={getAssetPath("/LRS.svg")} alt="Leonardo Rangel Segura Logo" class="h-14 inline-block" />
-        </a>
+<header class="fixed top-0 left-0 right-0 z-50 glass-effect py-3 px-4 md:px-6 transition-all duration-300">
+    <div class="flex items-center justify-between">
+        <!-- Logo -->
+        <div class="text-2xl font-bold">
+            <a href="#inicio" class="hover:scale-105 transition-transform duration-300" onclick="smoothScrollToSection('inicio')">
+                <img src={getAssetPath("/LRS.svg")} alt="Leonardo Rangel Segura Logo" class="h-8 md:h-12 inline-block" />
+            </a>
+        </div>
+
+        <!-- Navegación Desktop -->
+        <nav class="hidden md:block">
+            <ul class="flex space-x-2 lg:space-x-4">
+                <li><a href="#inicio" class="nav-link font-medium" onclick="smoothScrollToSection('inicio')">Inicio</a></li>
+                <li><a href="#acerca" class="nav-link font-medium" onclick="smoothScrollToSection('acerca')">Acerca</a></li>
+                <li><a href="#timeline" class="nav-link font-medium" onclick="smoothScrollToSection('timeline')">Timeline</a></li>
+                <li><a href="#futuro" class="nav-link font-medium" onclick="smoothScrollToSection('futuro')">Futuro</a></li>
+                <li><a href="#problem" class="nav-link font-medium" onclick="smoothScrollToSection('problem')">Problemática</a></li>
+                <li><a href="#contacto" class="nav-link font-medium" onclick="smoothScrollToSection('contacto')">Contacto</a></li>
+            </ul>
+        </nav>
+
+        <!-- Botón hamburguesa para móvil -->
+        <button 
+            id="mobile-menu-button" 
+            class="md:hidden p-2 rounded-lg glass-effect hover:bg-white/10 transition-all duration-300 z-50 relative"
+            aria-label="Abrir menú de navegación"
+            aria-expanded="false"
+        >
+            <svg id="hamburger-icon" class="w-6 h-6 text-white transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+            <svg id="close-icon" class="w-6 h-6 text-white transition-transform duration-300 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
     </div>
-    <nav>
-        <ul class="flex space-x-6">
-            <li><a href="#inicio" class="nav-link hover:text-purple-300 transition-colors duration-300" onclick="smoothScrollToSection('inicio')">Inicio</a></li>
-            <li><a href="#acerca" class="nav-link hover:text-purple-300 transition-colors duration-300" onclick="smoothScrollToSection('acerca')">Acerca</a></li>
-            <li><a href="#timeline" class="nav-link hover:text-purple-300 transition-colors duration-300" onclick="smoothScrollToSection('timeline')">Línea de Tiempo</a></li>
-            <li><a href="#futuro" class="nav-link hover:text-purple-300 transition-colors duration-300" onclick="smoothScrollToSection('futuro')">Futuro</a></li>
-            <li><a href="#problem" class="nav-link hover:text-purple-300 transition-colors duration-300" onclick="smoothScrollToSection('problem')">Problemática</a></li>
-            <li><a href="#contacto" class="nav-link hover:text-purple-300 transition-colors duration-300" onclick="smoothScrollToSection('contacto')">Contacto</a></li>
+
+    <!-- Menú móvil -->
+    <nav id="mobile-menu" class="md:hidden absolute top-full left-0 right-0 glass-effect border-t border-white/10 transform translate-y-0 opacity-0 invisible transition-all duration-300 ease-in-out max-h-0 overflow-hidden">
+        <ul class="flex flex-col p-4 space-y-2">
+            <li><a href="#inicio" class="mobile-nav-link block py-3 px-4 rounded-lg font-medium" onclick="smoothScrollToSection('inicio'); closeMobileMenu()">Inicio</a></li>
+            <li><a href="#acerca" class="mobile-nav-link block py-3 px-4 rounded-lg font-medium" onclick="smoothScrollToSection('acerca'); closeMobileMenu()">Acerca</a></li>
+            <li><a href="#timeline" class="mobile-nav-link block py-3 px-4 rounded-lg font-medium" onclick="smoothScrollToSection('timeline'); closeMobileMenu()">Timeline</a></li>
+            <li><a href="#futuro" class="mobile-nav-link block py-3 px-4 rounded-lg font-medium" onclick="smoothScrollToSection('futuro'); closeMobileMenu()">Futuro</a></li>
+            <li><a href="#problem" class="mobile-nav-link block py-3 px-4 rounded-lg font-medium" onclick="smoothScrollToSection('problem'); closeMobileMenu()">Problemática</a></li>
+            <li><a href="#contacto" class="mobile-nav-link block py-3 px-4 rounded-lg font-medium" onclick="smoothScrollToSection('contacto'); closeMobileMenu()">Contacto</a></li>
         </ul>
     </nav>
 </header>
 
 <style>
+/* Navegación desktop */
 .nav-link {
     position: relative;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    transition: all 0.3s ease;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.75rem;
+    color: var(--text-secondary);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 0.875rem;
+    white-space: nowrap;
 }
 
 .nav-link::before {
@@ -34,18 +70,188 @@ import { getAssetPath } from "../utils/assets";
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(45deg, rgba(168, 85, 247, 0.2), rgba(59, 130, 246, 0.2));
+    background: linear-gradient(135deg, var(--primary-purple), var(--secondary-purple));
     border-radius: inherit;
     opacity: 0;
     transition: opacity 0.3s ease;
     z-index: -1;
 }
 
-.nav-link:hover::before {
-    opacity: 1;
-}
-
 .nav-link:hover {
+    color: var(--text-primary);
     transform: translateY(-2px);
 }
+
+.nav-link:hover::before {
+    opacity: 0.2;
+}
+
+/* Navegación móvil */
+.mobile-nav-link {
+    color: var(--text-secondary);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid transparent;
+}
+
+.mobile-nav-link:hover {
+    color: var(--text-primary);
+    background: rgba(139, 92, 246, 0.1);
+    border-color: rgba(139, 92, 246, 0.3);
+}
+
+/* Estados del menú móvil */
+#mobile-menu.open {
+    opacity: 1;
+    visibility: visible;
+    max-height: 400px;
+}
+
+/* Animación del botón hamburguesa */
+#mobile-menu-button.open #hamburger-icon {
+    display: none;
+}
+
+#mobile-menu-button.open #close-icon {
+    display: block;
+}
+
+/* Overlay para cerrar el menú */
+.mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 40;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.mobile-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1024px) {
+    .nav-link {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Ocultar scroll horizontal en móvil */
+    body {
+        overflow-x: hidden;
+    }
+    
+    /* Ajustar el logo en móvil */
+    header img {
+        height: 2.5rem;
+    }
+}
+
+@media (max-width: 640px) {
+    header {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
 </style>
+
+<script>
+    // Función para scroll suave a secciones
+    function smoothScrollToSection(sectionId: string) {
+        const element = document.getElementById(sectionId);
+        if (element) {
+            element.scrollIntoView({ 
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    }
+
+    // Funcionalidad del menú móvil
+    function toggleMobileMenu() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        const button = document.getElementById('mobile-menu-button');
+        const hamburgerIcon = document.getElementById('hamburger-icon');
+        const closeIcon = document.getElementById('close-icon');
+        
+        if (!mobileMenu || !button || !hamburgerIcon || !closeIcon) return;
+        
+        const isOpen = mobileMenu.classList.contains('open');
+        
+        if (isOpen) {
+            mobileMenu.classList.remove('open');
+            button.classList.remove('open');
+            button.setAttribute('aria-expanded', 'false');
+            hamburgerIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+        } else {
+            mobileMenu.classList.add('open');
+            button.classList.add('open');
+            button.setAttribute('aria-expanded', 'true');
+            hamburgerIcon.classList.add('hidden');
+            closeIcon.classList.remove('hidden');
+        }
+    }
+    
+    function closeMobileMenu() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        const button = document.getElementById('mobile-menu-button');
+        const hamburgerIcon = document.getElementById('hamburger-icon');
+        const closeIcon = document.getElementById('close-icon');
+        
+        if (!mobileMenu || !button || !hamburgerIcon || !closeIcon) return;
+        
+        mobileMenu.classList.remove('open');
+        button.classList.remove('open');
+        button.setAttribute('aria-expanded', 'false');
+        hamburgerIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+    }
+    
+    // Event listeners
+    document.addEventListener('DOMContentLoaded', () => {
+        const button = document.getElementById('mobile-menu-button');
+        
+        if (button) {
+            button.addEventListener('click', toggleMobileMenu);
+        }
+        
+        // Cerrar menú al hacer clic fuera
+        document.addEventListener('click', (e) => {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const button = document.getElementById('mobile-menu-button');
+            const target = e.target as Element;
+            
+            if (mobileMenu && button && target) {
+                if (!mobileMenu.contains(target) && !button.contains(target)) {
+                    closeMobileMenu();
+                }
+            }
+        });
+        
+        // Cerrar menú al cambiar tamaño de ventana
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 768) {
+                closeMobileMenu();
+            }
+        });
+
+        // Cerrar menú al presionar Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeMobileMenu();
+            }
+        });
+    });
+
+    // Hacer las funciones globales para que puedan ser llamadas desde los onclick
+    (window as any).smoothScrollToSection = smoothScrollToSection;
+    (window as any).closeMobileMenu = closeMobileMenu;
+</script>
