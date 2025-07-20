@@ -13,7 +13,6 @@ permissions:
   pages: write
   id-token: write
 
-# Permitir solo un deployment concurrente, cancelando ejecuciones en progreso
 concurrency:
   group: "pages"
   cancel-in-progress: false
