@@ -3,7 +3,7 @@ import { getAssetPath } from "../utils/assets";
 ---
 
 <div
-    class="space-y-8 relative before:absolute before:inset-0 before:left-5 before:top-0 before:bottom-0 before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent md:before:left-[8.75rem] md:before:translate-x-0"
+    class="space-y-6 relative timeline-container"
     role="list"
     aria-label="Línea de tiempo de mi trayectoria académica y profesional"
 >
@@ -199,62 +199,6 @@ import { getAssetPath } from "../utils/assets";
                 <img
                     src={getAssetPath("/expo.jpg")}
                     alt="Fotografía de mi primera exposición de un proyecto de investigación en un evento gubernamental"
-                    class="h-auto w-full max-w-96 mx-auto rounded-lg shadow-md timeline-image"
-                    loading="lazy"
-                />
-            </div>
-        </div>
-    </div>
-    <div class="relative timeline-item" role="listitem">
-        <div class="md:flex items-center md:space-x-4 mb-3">
-            <div
-                class="flex items-center space-x-4 md:space-x-2 md:space-x-reverse"
-            >
-                <!-- Icon -->
-                <div
-                    class="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow md:order-1 timeline-icon"
-                    aria-label="Icono de evento"
-                >
-                    <svg
-                        class="fill-current text-purple-800"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        aria-hidden="true"
-                    >
-                        <path
-                            d="M8 0a8 8 0 1 0 8 8 8.009 8.009 0 0 0-8-8Zm0 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8Z"
-                        ></path>
-                    </svg>
-                </div>
-                <!-- Date -->
-                <time class="font-caveat font-medium text-lg sm:text-xl text-white md:w-28"
-                    datetime="2023-11"
-                    >Noviembre de 2023</time
-                >
-            </div>
-            <!-- Title -->
-            <div class="text-white ml-14">
-                <h3 class="text-base sm:text-lg font-medium">Mi primer Hackathon</h3>
-            </div>
-        </div>
-        <!-- Card -->
-        <div
-            class="bg-gradient-to-r from-purple-500 to-indigo-500 p-4 sm:p-6 rounded-lg text-white shadow-lg ml-14 md:ml-44 grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 timeline-card"
-        >
-            <div class="col-span-1 flex flex-col justify-center order-2 lg:order-1">
-                <p class="text-sm sm:text-base leading-relaxed text-center lg:text-left">
-                    Participé en mi primer Hackathon, fue una experiencia
-                    agridulce para mí, tuve la oportunidad de trabajar en equipo
-                    por 24 horas sin descanso, fue duro pero gratificante,
-                    aprendí mucho sobre el trabajo en equipo y sobre todo la
-                    resolución de problemas en tiempo real y bajo presión.
-                </p>
-            </div>
-            <div class="col-span-1 order-1 lg:order-2">
-                <img
-                    src={getAssetPath("/tec.jpg")}
-                    alt="Fotografía de mi primer Hackathon donde trabajé 24 horas en equipo desarrollando soluciones tecnológicas"
                     class="h-auto w-full max-w-96 mx-auto rounded-lg shadow-md timeline-image"
                     loading="lazy"
                 />
@@ -515,51 +459,109 @@ import { getAssetPath } from "../utils/assets";
 </div>
 
 <style>
-/* Estilos adicionales para asegurar que la línea de tiempo se vea en móvil */
-.timeline-item {
-    position: relative;
+/* Línea principal de la timeline */
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    left: 1.25rem; /* 20px - centrado con el icono */
+    top: 2.5rem; /* empieza después del primer icono */
+    bottom: 2rem;
+    width: 2px;
+    background: linear-gradient(to bottom, 
+        transparent 0%, 
+        #cbd5e1 10%, 
+        #cbd5e1 90%, 
+        transparent 100%);
+    z-index: 0;
 }
 
-/* Asegurar que la línea vertical se vea en móvil */
-@media (max-width: 768px) {
-    .timeline-item::before {
-        content: '';
-        position: absolute;
-        left: 1.25rem; /* 20px - posición del centro del icono */
-        top: 2.5rem; /* después del icono */
-        bottom: -2rem; /* conectar con el siguiente elemento */
-        width: 2px;
-        background: linear-gradient(to bottom, transparent, #cbd5e1, transparent);
-        z-index: 0;
+/* Para desktop, la línea va en el centro */
+@media (min-width: 768px) {
+    .timeline-container::before {
+        left: 8.75rem; /* posición desktop */
+        transform: translateX(-50%);
     }
-    
-    /* Remover la línea del último elemento */
-    .timeline-item:last-child::before {
-        display: none;
-    }
-    
-    /* Asegurar que los iconos estén por encima de la línea */
-    .timeline-icon {
-        position: relative;
-        z-index: 10;
-    }
-    
-    /* Ajustar las tarjetas */
-    .timeline-card {
-        position: relative;
-        z-index: 5;
-    }
+}
+
+/* Elementos de la timeline */
+.timeline-item {
+    position: relative;
+    z-index: 10;
+    margin-bottom: 1.5rem; /* Espaciado más compacto */
+}
+
+/* Asegurar que los iconos estén por encima de la línea */
+.timeline-icon {
+    position: relative;
+    z-index: 20;
+    background: white;
+    border: 2px solid #e2e8f0;
+}
+
+/* Tarjetas de la timeline */
+.timeline-card {
+    position: relative;
+    z-index: 15;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.timeline-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(139, 92, 246, 0.2);
 }
 
 /* Mejorar la responsividad de las imágenes */
 .timeline-image {
-    max-height: 250px;
+    max-height: 200px;
     object-fit: cover;
+    border-radius: 0.5rem;
 }
 
-@media (max-width: 640px) {
+@media (min-width: 640px) {
     .timeline-image {
-        max-height: 200px;
+        max-height: 250px;
+    }
+}
+
+/* Animaciones escalonadas */
+.timeline-item {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+.timeline-item:nth-child(1) { animation-delay: 0.1s; }
+.timeline-item:nth-child(2) { animation-delay: 0.2s; }
+.timeline-item:nth-child(3) { animation-delay: 0.3s; }
+.timeline-item:nth-child(4) { animation-delay: 0.4s; }
+.timeline-item:nth-child(5) { animation-delay: 0.5s; }
+.timeline-item:nth-child(6) { animation-delay: 0.6s; }
+.timeline-item:nth-child(7) { animation-delay: 0.7s; }
+.timeline-item:nth-child(8) { animation-delay: 0.8s; }
+.timeline-item:nth-child(9) { animation-delay: 0.9s; }
+.timeline-item:nth-child(10) { animation-delay: 1.0s; }
+.timeline-item:nth-child(11) { animation-delay: 1.1s; }
+.timeline-item:nth-child(12) { animation-delay: 1.2s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive mejorado */
+@media (max-width: 640px) {
+    .timeline-item {
+        margin-bottom: 1rem;
+    }
+    
+    .timeline-card {
+        margin-left: 3.5rem; /* ml-14 */
+        padding: 1rem;
     }
 }
 </style>
